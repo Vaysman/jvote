@@ -10,11 +10,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit-version>4.7</junit-version>
-        <log4j-version>1.2.15</log4j-version>
-        <bcprov-version>1.43</bcprov-version>
-        <gwt-version>1.7.1</gwt-version>
-        <jbehave-version>2.2-rc3</jbehave-version>
+        <junit.version>4.7</junit.version>
+        <log4j.version>1.2.15</log4j.version>
+        <bcprov.version>1.43</bcprov.version>
+        <gwt.version>1.7.1</gwt.version>
+        <jbehave.version>2.2-rc3</jbehave.version>
+        <jmock.version>2.5.1</jmock.version>
     </properties>
 
     <build>
@@ -70,44 +71,42 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>${junit-version}</version>
-                <scope>test</scope>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jmock</groupId>
+                <artifactId>jmock</artifactId>
+                <version>${jmock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jmock</groupId>
+                <artifactId>jmock-junit4</artifactId>
+                <version>${jmock.version}</version>
             </dependency>
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>${log4j-version}</version>
-                <scope>compile</scope>
+                <version>${log4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15</artifactId>
-                <version>${bcprov-version}</version>
-                <scope>compile</scope>
+                <version>${bcprov.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-user</artifactId>
-                <version>${gwt-version}</version>
-                <scope>provided</scope>
+                <version>${gwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-servlet</artifactId>
-                <version>${gwt-version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt-dev</artifactId>
-                <version>${gwt-version}</version>
-                <scope>compile</scope>
+                <version>${gwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jbehave</groupId>
                 <artifactId>jbehave-core</artifactId>
-                <version>${jbehave-version}</version>
-                <scope>test</scope>
+                <version>${jbehave.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -116,6 +115,16 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock-junit4</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -140,5 +149,6 @@
         <module>identification-ws</module>
         <module>cec-web</module>
         <module>model</module>
+        <module>myArtifactId</module>
     </modules>
 </project>
