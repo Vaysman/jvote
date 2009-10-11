@@ -8,7 +8,6 @@ package ru.wiseman.jvote.model;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +39,8 @@ public class Person implements Serializable {
 
     public void setPublicKey(String publicKey) throws InvalidKeyException {
         //TODO check public key
-        this.publicKey = publicKey;
+        throw new UnsupportedOperationException();
+        //this.publicKey = publicKey;
     }
 
     public Long getId() {
