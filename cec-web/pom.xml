@@ -15,8 +15,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>net.sf.mgp</groupId>
-                <artifactId>maven-gwt-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -24,19 +25,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <module>ru.wiseman.jvote.web.cec.App</module>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>${project.build.directory}/gwt/ru.wiseman.jvote.web.cec.App</directory>
-                        </resource>
-                    </webResources>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -48,11 +36,6 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <classifier>windows</classifier>
         </dependency>
     </dependencies>
 </project>
