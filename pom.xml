@@ -14,7 +14,7 @@
         <log4j.version>1.2.15</log4j.version>
         <bcprov.version>1.43</bcprov.version>
         <gwt.version>1.7.1</gwt.version>
-        <jbehave.version>2.2-rc3</jbehave.version>
+        <jbehave.version>2.3</jbehave.version>
         <jmock.version>2.5.1</jmock.version>
     </properties>
 
@@ -44,7 +44,7 @@
                         <phase>integration-test</phase>
                         <configuration>
                             <scenarioIncludes>
-                                <scenarioInclude>**/scenarios/*.java</scenarioInclude>
+                                <scenarioInclude>**/scenario/*.java</scenarioInclude>
                             </scenarioIncludes>
                             <scenarioExcludes>
                                 <scenarioExclude>**/*Steps.java</scenarioExclude>
@@ -149,6 +149,6 @@
         <module>identification-ws</module>
         <module>cec-web</module>
         <module>model</module>
-        <module>myArtifactId</module>
+        <module>servers-core</module>
     </modules>
 </project>
