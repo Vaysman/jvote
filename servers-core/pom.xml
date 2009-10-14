@@ -4,7 +4,7 @@
   <artifactId>servers-core</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>servers core</name>
+  <name>server's core</name>
   <parent>
       <artifactId>jvote</artifactId>
       <groupId>ru.wiseman.jvote</groupId>
@@ -46,6 +46,3 @@
       </plugins>
   </build>
 </project>
-
-
-
