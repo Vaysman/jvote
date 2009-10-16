@@ -112,7 +112,6 @@
                 <groupId>ru.wiseman.utils</groupId>
                 <artifactId>test-utils</artifactId>
                 <version>1.0-SNAPSHOT</version>
-                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
