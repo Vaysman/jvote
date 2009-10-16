@@ -1,27 +1,11 @@
 package ru.wiseman.jvote.server.scenario;
 
-import org.jbehave.scenario.MostUsefulConfiguration;
-import org.jbehave.scenario.PropertyBasedConfiguration;
-import org.jbehave.scenario.Scenario;
-import org.jbehave.scenario.parser.ClasspathScenarioDefiner;
-import org.jbehave.scenario.parser.PatternScenarioParser;
-import org.jbehave.scenario.parser.ScenarioDefiner;
-import org.jbehave.scenario.parser.UnderscoredCamelCaseResolver;
+import org.jbehave.scenario.steps.CandidateSteps;
 import ru.wiseman.jvote.server.scenario.steps.GetingVotingDescriptionSteps;
+import ru.wiseman.utils.test.jbehave.MyScenario;
 
-public class VoterGetVotingDescription extends Scenario
-{
-
-    public VoterGetVotingDescription() {
-        this(Thread.currentThread().getContextClassLoader());
-    }
-    
+public class VoterGetVotingDescription extends MyScenario {
     public VoterGetVotingDescription(final ClassLoader classLoader) {
-        super(new MostUsefulConfiguration() {
-            public ScenarioDefiner forDefiningScenarios() {
-                return new ClasspathScenarioDefiner(new UnderscoredCamelCaseResolver(".scenario"),
-                               new PatternScenarioParser(new PropertyBasedConfiguration()), classLoader);
-            }
-        }, new GetingVotingDescriptionSteps());
+        super(classLoader, (CandidateSteps) new GetingVotingDescriptionSteps());
     }
 }
