@@ -11,6 +11,6 @@ import org.jbehave.scenario.steps.Steps;
  *
  * @author vaysman
  */
-public class GetingVotingDescriptionSteps extends Steps{
+public class GettingVoteDescriptionSteps extends Steps{
 
 }

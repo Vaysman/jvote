@@ -1,6 +1,0 @@
-Scenario:
-As Voter I want to know all information about voting
-
-Given I dont have voting description
-When I asked it from CEC
-Then I should get voting information

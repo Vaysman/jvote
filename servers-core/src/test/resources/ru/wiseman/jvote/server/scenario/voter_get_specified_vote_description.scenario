@@ -1,0 +1,6 @@
+Scenario:
+As Voter I want to know all information about Test1 vote
+
+Given I do not have Test1 vote description
+When I asked Test1 vote description from CEC
+Then I should get Test1 vote description
