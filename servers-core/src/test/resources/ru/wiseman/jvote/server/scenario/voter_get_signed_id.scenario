@@ -1,0 +1,10 @@
+Scenario:
+As a Voter I want to stay anonymous when I vote.
+To ensure this I need a CEC signed Voter ID which
+does not compromise my anonymity.
+
+Given I have a Test1 vote description
+When I send 10 randomly generated masked Voter IDs to CEC
+Then I receive 1 Voter ID which will be signed
+When I send the masks for all Voter IDs except the received one
+Then I receive signed masked Voter ID
