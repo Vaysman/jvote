@@ -39,8 +39,11 @@ public class Person implements Serializable {
 
     public void setPublicKey(String publicKey) throws InvalidKeyException {
         //TODO check public key
-        throw new UnsupportedOperationException();
-        //this.publicKey = publicKey;
+        //FAKE
+        if(publicKey.compareToIgnoreCase("BAD") == 0) {
+            throw new InvalidKeyException("Bad key");
+        }
+        this.publicKey = publicKey;
     }
 
     public Long getId() {
