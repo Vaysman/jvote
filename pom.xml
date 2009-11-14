@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.wiseman.jvote</groupId>
     <artifactId>jvote</artifactId>
@@ -16,7 +17,41 @@
         <gwt.version>1.7.1</gwt.version>
         <jbehave.version>2.3</jbehave.version>
         <jmock.version>2.5.1</jmock.version>
+        <cuke4duke.version>0.1.4</cuke4duke.version>
+        <picocontainer.version>2.8.3</picocontainer.version>
+        <rspec.maven.plugin.version>1.0-beta-9-1</rspec.maven.plugin.version>
+        <appframework.version>1.0.3</appframework.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>codehaus</id>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>cukes</id>
+            <url>http://cukes.info/maven</url>
+        </repository>
+        <repository>
+            <url>http://download.java.net/maven/1</url>
+            <id>toplink</id>
+            <layout>legacy</layout>
+            <name>Repository for library Library[toplink]</name>
+        </repository>
+        <repository>
+            <url>http://download.java.net/maven/2</url>
+            <id>hibernate-persistence</id>
+            <layout>default</layout>
+            <name>Repository for library Library[hibernate-persistence]</name>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>cukes</id>
+            <url>http://cukes.info/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
@@ -35,35 +70,100 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
+            <!--            <plugin>
+               <groupId>org.jbehave</groupId>
+               <artifactId>jbehave-maven-plugin</artifactId>
+               <executions>
+                   <execution>
+                       <id>run-scenarios-found</id>
+                       <phase>test</phase>
+                       <configuration>
+                           <scenarioIncludes>
+                               <scenarioInclude>**/scenario/*.java</scenarioInclude>
+                           </scenarioIncludes>
+                           <scenarioExcludes>
+                               <scenarioExclude>**/*Steps.java</scenarioExclude>
+                           </scenarioExcludes>
+                           <scope>test</scope>
+                       </configuration>
+                       <goals>
+                           <goal>run-scenarios</goal>
+                       </goals>
+                   </execution>
+               </executions>
+           </plugin> -->
             <plugin>
-                <groupId>org.jbehave</groupId>
-                <artifactId>jbehave-maven-plugin</artifactId>
+                <groupId>cuke4duke</groupId>
+                <artifactId>cuke4duke-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArgs>
+                        <jvmArg>
+                            -Dcuke4duke.objectFactory=cuke4duke.internal.jvmclass.PicoFactory
+                        </jvmArg>
+                    </jvmArgs>
+                    <cucumberArgs>
+                        <cucumberArg>${basedir}/src/test/java</cucumberArg>
+                    </cucumberArgs>
+                    <gems>
+                        <gem>cucumber</gem>
+                    </gems>
+                    <features>${basedir}/src/test/features</features>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>run-scenarios-found</id>
-                        <phase>test</phase>
-                        <configuration>
-                            <scenarioIncludes>
-                                <scenarioInclude>**/scenario/*.java</scenarioInclude>
-                            </scenarioIncludes>
-                            <scenarioExcludes>
-                                <scenarioExclude>**/*Steps.java</scenarioExclude>
-                            </scenarioExcludes>
-                            <scope>test</scope>
-                        </configuration>
+                        <id>run-features</id>
+                        <phase>integration-test</phase>
                         <goals>
-                            <goal>run-scenarios</goal>
+                            <goal>cucumber</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+            <!--
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>rspec-maven-plugin</artifactId>
+                            <version>${rspec.maven.plugin.version}</version>
+                            <configuration>
+                                &lt;!&ndash; jrubyHome points to the JRuby installation you wish to use (usually ${env.JRUBY_HOME}) &ndash;&gt;
+                                <jrubyHome>${env.JRUBY_HOME}</jrubyHome>
+                                &lt;!&ndash; sourceDirectory references where your RSpec tests reside &ndash;&gt;
+                                <sourceDirectory>${basedir}/src/test/ruby/specs</sourceDirectory>
+                                &lt;!&ndash; outputDirectory specifies where the RSpec report should be placed &ndash;&gt;
+                                <outputDirectory>${basedir}/target</outputDirectory>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>test</id>
+                                    <phase>test</phase>
+                                    <goals>
+                                        <goal>spec</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+            -->
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>src/main/ruby</directory>
+                <includes>
+                    <include>**/*.rb</include>
+                </includes>
+            </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/ruby</directory>
+                <includes>
+                    <include>**/*.rb</include>
+                </includes>
+            </testResource>
+        </testResources>
     </build>
 
     <dependencyManagement>
@@ -109,8 +209,28 @@
                 <version>${jbehave.version}</version>
             </dependency>
             <dependency>
+                <groupId>cuke4duke</groupId>
+                <artifactId>cuke4duke</artifactId>
+                <version>${cuke4duke.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.picocontainer</groupId>
+                <artifactId>picocontainer</artifactId>
+                <version>${picocontainer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jdesktop</groupId>
+                <artifactId>appframework</artifactId>
+                <version>${appframework.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>ru.wiseman.utils</groupId>
                 <artifactId>test-utils</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.wiseman.jvote</groupId>
+                <artifactId>model</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
@@ -122,36 +242,46 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--        <dependency>
+           <groupId>org.jmock</groupId>
+           <artifactId>jmock</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.jmock</groupId>
+           <artifactId>jmock-junit4</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>log4j</groupId>
+           <artifactId>log4j</artifactId>
+           <scope>provided</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.bouncycastle</groupId>
+           <artifactId>bcprov-jdk15</artifactId>
+           <scope>compile</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.jbehave</groupId>
+           <artifactId>jbehave-core</artifactId>
+           <scope>test</scope>
+       </dependency> -->
         <dependency>
-            <groupId>org.jmock</groupId>
-            <artifactId>jmock</artifactId>
+            <groupId>cuke4duke</groupId>
+            <artifactId>cuke4duke</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jmock</groupId>
-            <artifactId>jmock-junit4</artifactId>
+            <groupId>org.picocontainer</groupId>
+            <artifactId>picocontainer</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jbehave</groupId>
-            <artifactId>jbehave-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>ru.wiseman.utils</groupId>
-            <artifactId>test-utils</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!--        <dependency>
+           <groupId>ru.wiseman.utils</groupId>
+           <artifactId>test-utils</artifactId>
+           <scope>test</scope>
+       </dependency> -->
     </dependencies>
 
     <modules>
