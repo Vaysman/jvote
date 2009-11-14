@@ -1,4 +1,7 @@
-target
+target/
 *.iml
 *.ipr
 *.iws
+.idea/
+log
+*.log

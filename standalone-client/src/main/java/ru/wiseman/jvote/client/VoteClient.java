@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
  * Hello world!
  *
  */
-public class App 
+public class VoteClient 
 {
     public static void main( String[] args )
     {	
