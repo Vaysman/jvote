@@ -9,8 +9,6 @@ import javax.swing.*;
 public class VoteClient extends SingleFrameApplication {
     @Override
     protected void startup() {
-        getMainFrame().setTitle("Vote Client");
-
         JLabel label = new JLabel("Started");
         show(label);
     }
@@ -24,7 +22,6 @@ public class VoteClient extends SingleFrameApplication {
         Logger logger = Logger.getLogger("ru.wiseman.jvote.client");
         logger.info("Client started");
         Application.launch(VoteClient.class, args);
-        System.out.println("Hello World!");
         logger.info("Client finished");
     }
 }
