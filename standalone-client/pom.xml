@@ -50,15 +50,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <testResources>
-            <testResource>
-                <directory>src/test/features/support</directory>
-                <includes>
-                    <include>env.rb</include>
-                </includes>
-                <filtering>true</filtering>
-            </testResource>
-        </testResources>
     </build>
 </project>
 
