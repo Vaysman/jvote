@@ -21,6 +21,7 @@
         <picocontainer.version>2.8.3</picocontainer.version>
         <rspec.maven.plugin.version>1.0-beta-9-1</rspec.maven.plugin.version>
         <appframework.version>1.0.3</appframework.version>
+        <swinger.lib.home>D:/WORK/univer/voting/swinger</swinger.lib.home>
     </properties>
 
     <repositories>
